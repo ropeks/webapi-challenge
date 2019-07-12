@@ -4,7 +4,7 @@ const server = express();
 
 server.use(express.json());
 
-server.use('/', routes);
+server.use('/api', routes);
 
 server.get('/', (req, res) => {
   res.send('<h1>Server is up and running.</h1>');
