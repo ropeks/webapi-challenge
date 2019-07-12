@@ -42,6 +42,19 @@ router.delete('/actions/:id', (req, res) => {
         })
 });
 
+router.put('/actions/:id', (req, res) => {
+    const { id } = req.params;
+    Actions
+        .update(id, req.body)
+        .then(data => {
+            res.status(200).json(data);
+        })
+        .catch(err => {
+            res.status(500)
+                .json({ message: 'cannot update action' })
+        })
+});
+
 // project routes
 
 router.get('/projects', (req, res) => {
@@ -81,5 +94,17 @@ router.delete('/projects/:id', (req, res) => {
         })
 });
 
+router.put('/projects/:id', (req, res) => {
+    const { id } = req.params;
+    Projects
+        .update(id, req.body)
+        .then(data => {
+            res.status(200).json(data);
+        })
+        .catch(err => {
+            res.status(500)
+                .json({ message: 'cannot update project' })
+        })
+});
 
 module.exports = router;
