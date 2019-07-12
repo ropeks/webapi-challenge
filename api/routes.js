@@ -17,6 +17,18 @@ router.get('/actions', (req, res) => {
         })
 });
 
+router.post('/actions', (req, res) => {
+    Actions
+        .insert(req.body)
+        .then(data => {
+            res.status(200).json(data);
+        })
+        .catch(err => {
+            res.status(500)
+                .json({ message: 'cannot add actions' })
+        })
+});
+
 // project routes
 
 router.get('/projects', (req, res) => {
@@ -28,6 +40,18 @@ router.get('/projects', (req, res) => {
         .catch(err => {
             res.status(500)
                 .json({ message: 'cannot retrieve projects' })
+        })
+});
+
+router.post('/projects', (req, res) => {
+    Projects
+        .insert(req.body)
+        .then(data => {
+            res.status(200).json(data);
+        })
+        .catch(err => {
+            res.status(500)
+                .json({ message: 'cannot add projects' })
         })
 });
 
